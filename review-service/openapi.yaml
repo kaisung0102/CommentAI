@@ -3,15 +3,13 @@
 
 openapi: 3.0.3
 info:
-    title: Greeter API
-    description: The greeting service definition.
+    title: ""
     version: 0.0.1
 paths:
     /helloworld/{name}:
         get:
             tags:
                 - Greeter
-                - subgroup
             description: Sends a greeting
             operationId: Greeter_SayHello
             parameters:
@@ -27,8 +25,56 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/helloworld.v1.HelloReply'
+    /v1/review:
+        post:
+            tags:
+                - Review
+            operationId: Review_CreateReview
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/api.review.v1.CreateReviewRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.review.v1.CreateReviewReply'
 components:
     schemas:
+        api.review.v1.CreateReviewReply:
+            type: object
+            properties:
+                reviewID:
+                    type: string
+        api.review.v1.CreateReviewRequest:
+            type: object
+            properties:
+                userID:
+                    type: string
+                orderID:
+                    type: string
+                score:
+                    type: integer
+                    format: int32
+                serviceScore:
+                    type: integer
+                    format: int32
+                expressScore:
+                    type: integer
+                    format: int32
+                content:
+                    type: string
+                picinfo:
+                    type: string
+                videoinfo:
+                    type: string
+                anonymous:
+                    type: boolean
+            description: CreateReviewRequest 创建评价参数
         helloworld.v1.HelloReply:
             type: object
             properties:
@@ -37,3 +83,5 @@ components:
             description: The response message containing the greetings
 tags:
     - name: Greeter
+      description: The greeting service definition.
+    - name: Review

@@ -49,3 +49,12 @@ docker build -t <your-docker-image-name> .
 docker run --rm -p 8000:8000 -p 9000:9000 -v </path/to/your/configs>:/data/conf <your-docker-image-name>
 ```
 
+## sql
+
+```bash
+# sql
+docker run --name mysql -p 13306:13306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql
+
+# run
+docker run --rm -p 8000:8000 -p 9000:9000 -v </path/to/your/configs>:/data/conf <your-docker-image-name>
+```
