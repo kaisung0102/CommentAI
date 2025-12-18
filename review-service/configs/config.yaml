@@ -13,3 +13,6 @@ data:
     addr: 127.0.0.1:6379
     read_timeout: 0.2s
     write_timeout: 0.2s
+unique_id:
+  start_time: "2023-01-01"
+  machine_ID: 1

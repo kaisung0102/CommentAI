@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package review.v1;
+
+import "errors/errors.proto";
+
+option go_package = "review-service/api/review/v1;v1";
+option java_multiple_files = true;
+option java_package = "review.v1";
+// option objc_class_prefix = "APIReviewV1";
+
+enum ErrorReason {
+  option (errors.default_code) = 500;
+  
+  DB_ERROR = 0 [(errors.code) = 500];
+  ORDER_REVIEWED = 100 [(errors.code) = 400];
+  REPLY_EXIST = 101 [(errors.code) = 400];
+  REPLY_NOT_ALLOWED = 102 [(errors.code) = 400];
+}
